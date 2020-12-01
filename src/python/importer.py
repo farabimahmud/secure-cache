@@ -88,7 +88,8 @@ class CodeImporter(object):
 # Create an importer and add it to the meta_path so future imports can
 # use it.  There's currently nothing in the importer, but calls to
 # add_module can be used to add code.
-import sys
+import sys, os
+sys.path.append(os.getcwd())
 importer = CodeImporter()
 add_module = importer.add_module
 sys.meta_path.append(importer)

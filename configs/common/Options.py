@@ -164,6 +164,13 @@ def addCommonOptions(parser):
     # start by adding the base options that do not assume an ISA
     addNoISAOptions(parser)
 
+    # cache replacement options
+    parser.add_option("--llc-replacement-policy",
+                      type="choice", default="LRU",
+                      choices=["LRU","BRRIP", "FIFO", "LFU", "MRU", "Random"],
+                      help= "LLC cache replacement policy"
+                     )
+
     # system options
     parser.add_option("--list-cpu-types",
                       action="callback", callback=_listCpuTypes,

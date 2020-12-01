@@ -40,6 +40,7 @@
 #include "base/logging.hh"
 #include "params/TreePLRURP.hh"
 
+
 /**
  * Get the index of the parent of the given indexed subtree.
  *

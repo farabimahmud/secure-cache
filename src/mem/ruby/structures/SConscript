@@ -43,3 +43,6 @@ Source('PersistentTable.cc')
 Source('RubyPrefetcher.cc')
 Source('TimerTable.cc')
 Source('BankedArray.cc')
+
+DebugFlag('ScatterCache')
+DebugFlag('SecureCache')

@@ -314,6 +314,7 @@ if main['GCC'] or main['CLANG']:
     # As gcc and clang share many flags, do the common parts here
     main.Append(CCFLAGS=['-pipe'])
     main.Append(CCFLAGS=['-fno-strict-aliasing'])
+    main.Append(CCFLAGS=['-fno-lto'])
     # Enable -Wall and -Wextra and then disable the few warnings that
     # we consistently violate
     main.Append(CCFLAGS=['-Wall', '-Wundef', '-Wextra',

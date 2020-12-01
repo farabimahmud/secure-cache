@@ -31,6 +31,7 @@ from m5.objects import *
 from m5.defines import buildEnv
 from .Ruby import create_topology, create_directories
 from .Ruby import send_evicts
+from m5.objects.ReplacementPolicies import * 
 
 #
 # Declare caches used by the protocol
@@ -133,6 +134,18 @@ def create_system(options, full_system, system, dma_ports, bootmem,
 
     l2_index_start = block_size_bits + l2_bits
 
+    #cache repplacement policy
+    policies = {
+            "LRU" : "TreePLRURP",
+            "FIFO" : "FIFORP",
+            "LFU": "LFURP",
+            "MRU": "MRURP",
+            "BRRIP" : "BRRIPRP",
+            "Random" : "RandomRP",
+            "SecondChance" : "SecondChanceRP",
+
+            }
+
     for i in range(options.num_l2caches):
         #
         # First create the Ruby objects associated with this cpu
@@ -140,7 +153,8 @@ def create_system(options, full_system, system, dma_ports, bootmem,
         l2_cache = L2Cache(size = options.l2_size,
                            assoc = options.l2_assoc,
                            start_index_bit = l2_index_start)
-
+        l2_cache.replacement_policy = getattr(m5.objects.ReplacementPolicies, 
+                policies[options.llc_replacement_policy])()
         l2_cntrl = L2Cache_Controller(version = i,
                                       L2cache = l2_cache,
                                       transitions_per_cycle = options.ports,
