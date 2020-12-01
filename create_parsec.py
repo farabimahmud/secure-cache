@@ -8,8 +8,9 @@ import math
 
 
 replacement_policies = [
-        'FIFO',
-        'LRU'
+        'LRU',
+        'Random',  
+        
         ]
 
 schemes = replacement_policies
@@ -38,7 +39,7 @@ l2_victim_sizes = [16]
 # victim_sizes=[(4,4)]
 #test_case = 'vc-conservative-spec-try3-upto-100m'
 #test_case = 'vc-unsafe-parsec-arm-l1-100m'
-test_case = 'week-nov-30'
+test_case = 'esting-30'
 
 m5_root = '/home/grads/f/farabi/secure-cache/m5out'
 
